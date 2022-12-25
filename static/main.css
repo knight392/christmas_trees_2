@@ -1,0 +1,92 @@
+/* 小屏幕手机端 */
+@media (min-width: 0px) and (max-width: 768px) {
+    .div1 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: 768px) and (max-width: 992px) {
+    .div1 {
+        width: 300px;
+        height: 300px;
+        background-color: blue;
+    }
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media (min-width: 992px) {
+    .div1 {
+        width: 500px;
+        height: 500px;
+        background-color: aqua;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #161616;
+    color: #c5a880;
+    font-family: sans-serif;
+}
+
+label {
+    display: inline-block;
+    background-color: #161616;
+    padding: 16px;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    width: 300px;
+    border-radius: 10px;
+    border: 1px solid #c5a880;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.btn {
+    background-color: #161616;
+    border-radius: 10px;
+    color: #c5a880;
+    border: 1px solid #c5a880;
+    padding: 16px;
+    width: 300px;
+    margin-bottom: 16px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.separator {
+    font-weight: bold;
+    text-align: center;
+    width: 300px;
+    margin: 16px 0px;
+    color: #a07676;
+}
+
+.title {
+    color: #a07676;
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+}
+
+.text-loading {
+    font-size: 2rem;
+}
