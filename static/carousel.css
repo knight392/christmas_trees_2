@@ -2,9 +2,6 @@
 #carousel {
     position: fixed;
     bottom: 10px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    overflow: hidden;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -13,6 +10,9 @@
     perspective: 1000px;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
 }
 
 #drag-container,

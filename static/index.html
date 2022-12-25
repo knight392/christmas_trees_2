@@ -5,13 +5,13 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>圣诞树</title>
+  <title>为黄小仙女🧚‍♀️种的圣诞树🎄</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
 
   <link rel="stylesheet" href="./main.css" />
 
-  <link rel="stylesheet" href="./carousel.css"/>
+  <link rel="stylesheet" href="./carousel.css" />
 
   <script>
     window.console = window.console || function (t) { };
@@ -22,6 +22,30 @@
       window.parent.postMessage("resize", "*");
     }
   </script>
+
+  <style>
+    .big-title {
+      position: fixed;
+      top: 60px;
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      width: 100%;
+      font-size: 36px;
+      color: #fff;
+    }
+
+    .answer-box {
+      background-color: #161616;
+      border-radius: 10px;
+      color: #c5a880;
+      border: 1px solid #c5a880;
+      padding: 16px;
+      width: 300px;
+      margin-bottom: 16px;
+      line-height: 1.5;
+      outline: none;
+    }
+  </style>
 </head>
 
 <body translate="no">
@@ -35,31 +59,22 @@
 
   <div id="overlay">
     <ul>
-      <li class="title">请选择音乐</li>
+      <li class="title">来者何人？</li>
       <li>
-        <button class="btn" id="btnA" type="button">
-          Snowflakes Falling Down by Simon Panrucker
-        </button>
+        <input class="answer-box" id="answer_box" type="text" placeholder="请输入密码" />
       </li>
       <li>
-        <button class="btn" id="btnB" type="button">
-          This Christmas by Dott
-        </button>
-      </li>
-      <li>
-        <button class="btn" id="btnC" type="button">
-          No room at the inn by TRG Banks
-        </button>
-      </li>
-      <li>
-        <button class="btn" id="btnD" type="button">
-          Jingle Bell Swing by Mark Smeby
+        <button class="entry-btn" id="entery_btn" id="btnA" type="button">
+          芝麻开门
         </button>
       </li>
     </ul>
   </div>
 
-  <div id="carousel">
+  <div id="big_title" class="big-title" style="display: none;">
+    Merry Christmas🎄, My little lovely💗😘!
+  </div>
+  <div id="carousel" style="display: none;">
     <div id="drag-container">
       <div id="spin-container">
         <!-- Add your images (or video) here -->
@@ -92,12 +107,12 @@
         </video>
 
         <!-- Text at center of ground -->
-        <p>Merry Christmas For Huang</p>
+        <p>Merry Christmas🎄, My little lovely💗😘!</p>
       </div>
       <div id="ground"></div>
     </div>
   </div>
-
+  <script src="./carousel.js"></script>
   <script id="rendered-js">
     const { PI, sin, cos } = Math;
     const TAU = 2 * PI;
@@ -140,10 +155,35 @@
 
     const audio = new THREE.Audio(listener);
 
-    const buttons = document.querySelectorAll(".btn");
-    buttons.forEach((button, index) =>
-      button.addEventListener("click", () => loadAudio(index))
-    );
+    const entryButton = document.getElementById('entery_btn');
+    entryButton.addEventListener("click", async () => {
+      const pwd = document.getElementById('answer_box').value
+      if (await checkPwd(pwd)) {
+        loadAudio(1);
+      } else {
+        alert('给爷滚！');
+      }
+    });
+
+    function checkPwd(pwd) {
+      return new Promise((resolve) => {
+        fetch('/check_pwd?pwd=' + pwd).then((res) => {
+          res.json().then(({ res }) => {
+            resolve(res)
+          })
+        }).catch(e => {
+          resolve(false);
+          alert('出错了：' + e);
+        });
+      })
+    }
+
+    function showCarouselAndTitle() {
+      document.getElementById('carousel').style.display = 'block';
+      document.getElementById('big_title').style.display = 'block';
+      _removePointEvent();
+      setTimeout(_initCarousel, 100);
+    }
 
     function init() {
       const overlay = document.getElementById("overlay");
@@ -208,6 +248,7 @@
 
       addListners(camera, renderer, composer);
       animate();
+      showCarouselAndTitle();
     }
 
     function animate(time) {
@@ -220,11 +261,9 @@
       requestAnimationFrame(animate);
     }
 
-
-
     function loadAudio(i) {
       document.getElementById("overlay").innerHTML =
-        '<div class="text-loading">正在下载音乐，小仙女🧚‍♀️请稍等一下哦...</div>';
+        '<div class="text-loading">亲爱的小仙女🧚‍♀️请稍等一下哦，老人男👴正在为你飞奔而来啦🏃‍♀️！</div>';
       const files = [
         "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Simon_Panrucker/Happy_Christmas_You_Guys/Simon_Panrucker_-_01_-_Snowflakes_Falling_Down.mp3",
         "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Dott/This_Christmas/Dott_-_01_-_This_Christmas.mp3",
@@ -579,7 +618,6 @@
 
           camera.aspect = width / height;
           camera.updateProjectionMatrix();
-
           renderer.setSize(width, height);
           composer.setSize(width, height);
         },
@@ -587,7 +625,6 @@
       );
     }
   </script>
-  <script src="./carousel.js"></script>
 </body>
 
 </html>
