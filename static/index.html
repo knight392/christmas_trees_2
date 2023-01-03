@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>为黄小仙女🧚‍♀️种的圣诞树🎄</title>
+  <title>送给Apaas的圣诞树🎄</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
 
@@ -72,7 +72,7 @@
   </div>
 
   <div id="big_title" class="big-title" style="display: none;">
-    Merry Christmas🎄, My little lovely💗😘!
+    Merry Christmas🎄 And Happy New Year🎆 To Apaaser🎉!
   </div>
   <div id="carousel" style="display: none;">
     <div id="drag-container">
@@ -107,7 +107,7 @@
         </video>
 
         <!-- Text at center of ground -->
-        <p>Merry Christmas🎄, My little lovely💗😘!</p>
+        <p>Merry Christmas🎄 And Happy New Year🎆 To Apaaser 🎉!</p>
       </div>
       <div id="ground"></div>
     </div>
@@ -159,9 +159,9 @@
     entryButton.addEventListener("click", async () => {
       const pwd = document.getElementById('answer_box').value
       if (await checkPwd(pwd)) {
-        loadAudio(1);
+        loadAudio(2);
       } else {
-        alert('给爷滚！');
+        alert('密码错误');
       }
     });
 
@@ -263,7 +263,7 @@
 
     function loadAudio(i) {
       document.getElementById("overlay").innerHTML =
-        '<div class="text-loading">亲爱的小仙女🧚‍♀️请稍等一下哦，老人男👴正在为你飞奔而来啦🏃‍♀️！</div>';
+        '<div class="text-loading">亲爱的 Apaaser 圣诞快乐、新年快乐🎉！请稍等，正在下载音乐...</div>';
       const files = [
         "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Simon_Panrucker/Happy_Christmas_You_Guys/Simon_Panrucker_-_01_-_Snowflakes_Falling_Down.mp3",
         "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Dott/This_Christmas/Dott_-_01_-_This_Christmas.mp3",

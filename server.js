@@ -6,7 +6,7 @@ app.use(express.static('static'));
 app.get('/check_pwd', (req, res) => {
     const pwd = req.query.pwd;
     res.json({
-        res: pwd === '老男人的小仙女'
+        res: pwd?.toLocaleLowerCase() === 'apaaser'
     })
 });
 
